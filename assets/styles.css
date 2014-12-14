@@ -18,6 +18,7 @@
 	background-color: red;
 	border: none;
 	padding: 5px;
+	display: inline-block;
 }
 
 .login-error {

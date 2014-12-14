@@ -2,7 +2,7 @@
 	session_start();
 	class Main extends CI_Controller{
 
-		public function index(){
+		public function index() {
 			if ($this->session->userdata('logged')) {
 				$userdata = $this->session->userdata;
 				$this->load->model('actor_model', 'am');
@@ -16,12 +16,19 @@
 			}
 		}
 
-		public function logout(){
+		public function logout() {
 			$this->session->unset_userdata('logged');
    			session_destroy();
    			redirect('main', 'refresh');
 		}
 
+		public function delete_actor() {
+			$this->load->model('actor_model', 'am');
+			$id = $this->uri->segment(3);
+			$this->am->deleteActor($id);
+			
+			$this->index();
+		}
 		
 
 	}
