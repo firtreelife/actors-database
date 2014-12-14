@@ -15,11 +15,20 @@
 
 
 		
+		
 
 		<?php for($i=0;$i<count($actorsdata);$i++){ ?>
+			
+			<?php  
+				if (!empty($actorsdata[$i]['photos'])) {
+					$photo_src = base_url() . 'uploads/actors-photos/' . $actorsdata[$i]['id'];
+				} else {
+					$photo_src = base_url() . 'assets/images/default-actor-avatar.png';
+				}
+			?>
 
 			<div class="actor-preview group">
-				<div class="actor-photo"></div>
+				<div class="actor-photo"><img style="width: 200px;" src="<?= $photo_src; ?>" alt="Photo"></div>
 				<div class="actor-info">
 					<div><?= $actorsdata[$i]['name'];?> <?=$actorsdata[$i]['surname'];?></div> <!-- name surname -->
 					<div>Возраст: <?= $actorsdata[$i]['date_of_birth'];?></div>
