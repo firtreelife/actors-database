@@ -1,9 +1,14 @@
 <?php
+	session_start();
 	class Login extends CI_Controller{
 
 		public function index(){
-			$this->load->view('header');
-			$this->load->view('login');
+			if ($this->session->userdata('logged')) {
+				redirect('main', 'refresh');
+			} else {
+				$this->load->view('header');
+				$this->load->view('login');
+			}
 		}
 
 		public function verify(){
@@ -16,8 +21,8 @@
 				$this->session->set_userdata($session_userdata);
 				redirect('main', 'refresh');
 			} else {
-				$this->load->view('header');
-				$this->load->view('login');
+				$this->session->set_flashdata('flashError', 'Не удается войти. Пожалуйста, проверьте правильность написания логина и пароля.');
+				redirect('login', 'refresh');
 			}
 		}
 

@@ -1,21 +1,3 @@
-<body>
-	<div class="wrapper wrap-2">
-		<div class="group">
-			<div class="admin-heading">
-				<?= "Вы авторизированы как " . $userdata['username'] ."."; ?>
-					
-				<a href="main/logout">Выйти</a><br>
-
-				<?php if ($userdata['role'] == 'administrator') { ?>
-					<a href="#">Добавить анкету</a><br/>
-					<!-- <a href="#">Создать нового пользователя</a> -->
-				<?php } ?>
-			</div>
-		</div>
-
-
-		
-		
 
 		<?php for($i=0;$i<count($actorsdata);$i++){ ?>
 			
@@ -82,7 +64,7 @@
 					<?= $skills; ?>
 					<?php if ($userdata['role'] == 'administrator') { ?>
 						<a href="<?=base_url() . "index.php/main/delete_actor/" . $actorsdata[$i]['id']; ?>" class="danger">Удалить анкету</a><br>
-						<a href="actor_edit.php?id=">Редактировать анкету</a><br>
+						<a href="<?=base_url() . "index.php/main/edit_actor/" . $actorsdata[$i]['id']; ?>">Редактировать анкету</a><br>
 					<?php } ?>
 				</div>
 			</div>

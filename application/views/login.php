@@ -1,3 +1,5 @@
+
+
 <body>	
 	<div class="wrapper">
 		<div id="contacts">
@@ -29,6 +31,9 @@
 		<div id="login">
 			<h1 id="login-title">Авторизация</h1>
 			<div id="form">
+				<?if($this->session->flashdata('flashError')):?>
+				<h3 class='error'> <?=$this->session->flashdata('flashError')?> </h3>
+				<?endif?>
 				<form action="<?=base_url();?>index.php/login/verify" method="post">
 					<input type="text" placeholder="Логин" name="username" id="username"><br>
 					<input type="password" placeholder="Пароль" name="password" id="password"><br>
